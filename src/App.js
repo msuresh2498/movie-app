@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import './App.css';
 
 
@@ -78,28 +79,81 @@ const MOVIELIST = [
 
 const movieList = MOVIELIST;
 
+function AddColor() {
+  const [color, setColor] = useState("pink")
+  const styles = {
+    background: color,
+  };
+
+  const [colorlist, setColorList] = useState(["teal", "crimson", "orange"]);
+
+  return (
+    <div>
+      <input style={styles} type= "text"
+      onChange={(event) => setColor(event.target.value)} value={color}
+      />
+      <button onClick={() => setColorList([...colorlist, color])} >Add Color</button>
+
+      {colorlist.map((clr) =>(
+        <ColorBox clr={clr}/>
+      ))  }
+    </div>
+  )
+}
+
+function ColorBox({ clr }) {
+  const styles ={
+    height: "25px",
+    width: "250px",
+    background: clr,
+    marginTop: "10px"
+  }
+  return <div style={styles}></div>
+}
+
+
 function Movie( {movie}){
 
+  const styles = {
+    color: movie.rating > 8.0 ? "green":"red",
+  };
+  const [show, setShow] = useState(true);  
+return (   
+    <div className='Movie-container'>
+      <img src={movie.poster} alt='' className='Movie-poster'/>
+      <div className='Movie-specs'>
+        <h3 className='Movie-name'>{movie.name}</h3>
+        <p style={styles} className='Movie-rating'>⭐{movie.rating}</p>
+        </div>
+        <button onClick={() => setShow( !show)}>Toggle summary</button>
+        {show ? <p className='Movie-summary'>{movie.summary}</p>: null}
+        <Counter />
+        
+    </div>
 
-return ( 
-<div className='Movie-container'>
-  <img src={movie.poster} alt='' className='Movie-poster'/>
-  <div className='Movie-specs'>
-    <h3 className='Movie-name'>{movie.name}</h3>
-    <p className='Movie-rating'>⭐{movie.rating}</p>
-    <p className='Movie-summary'>{movie.summary}</p>
-  </div>
-</div>
 );
 }
 
+function Counter() {
+  const [like, setLike] = useState(0);
+  const [disLike, setDisLike] = useState(0);
+  
+  return (
+    <div>
+      <button onClick={()=> setLike(like + 1)}>👍{like}</button>
+      <button onClick={()=> setDisLike(disLike + 1)}>👎{disLike}</button>
+    </div>
+  );
+}
 function App() {
   return (
     <div className="App">
+      {/* <AddColor />   */}
       <div className='movie-list'>{movieList.map((mv)=>(
         <Movie movie ={mv} />
       ))}
       </div>
+      
     </div>
   );
 }
