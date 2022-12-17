@@ -148,7 +148,7 @@ function Counter() {
 function App() {
   return (
     <div className="App">
-      {/* <AddColor />   */}
+      <AddColor />
       <div className='movie-list'>{movieList.map((mv)=>(
         <Movie movie ={mv} />
       ))}
