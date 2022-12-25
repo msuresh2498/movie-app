@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { TextField } from '@mui/material';
-import { movieList } from './App';
 
-export function AddMovie() {
+export function AddMovie({ movieList, setMovieList}) {
   const [name, setName] = useState("");
   const [poster, setPoster] = useState("");
   const [rating, setRating] = useState("");
@@ -17,7 +16,7 @@ export function AddMovie() {
     };
     console.log(newMovie);
 
-    //setMovieList([...movieList, newMovie]);
+    setMovieList([...movieList, newMovie]);
   };
 
   return (
