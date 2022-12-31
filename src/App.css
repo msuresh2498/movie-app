@@ -1,3 +1,17 @@
+.HomePage{
+  text-align: center;
+  font-size: 50px;
+  margin-top: 250px;
+  height: 100vh;
+
+}
+.basicform{
+  height: 100vh;
+}
+.notfound{
+  height: 100vh;
+}
+
 .Movie-container{
   width: 250px;
   height: min-content;

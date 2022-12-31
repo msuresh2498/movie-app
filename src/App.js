@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import { Counter } from './Counter';
 import { intial_MOVIELIST } from './intial_MOVIELIST';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -19,6 +19,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { Home, NotFound } from './Home';
+import { BasicForm } from './BasicForm';
 
 
 export const movieList = intial_MOVIELIST;
@@ -55,24 +57,6 @@ return (
 );
 }
 
-function NotFound() {
-  return(
-    <div>
-    <img className='notfound' src="https://cdn.dribbble.com/users/2399102/screenshots/10579506/media/bcd1211375b29ae022039e52b2dd7734.mp4" alt="not found" />
-    <h1>404 Not Found</h1>
-    </div>
-  )
-}
-
-function Home() {
-  return(
-  <div className='HomePage'>Welcome to the Movie App🎉🎉</div>  
-  )
-}
-
-
-
-
 function App() {
   const [movieList, setMovieList] = useState(intial_MOVIELIST)
   const navigate = useNavigate()
@@ -84,6 +68,12 @@ function App() {
         mode: mode,
       },
     }); 
+
+
+    fetch("https://6328115f5731f3db99635f14.mockapi.io/movies")
+    .then((data) =>data.json())
+    .then((mvs)=> console.log(mvs));
+
 
   return (
     <ThemeProvider theme={themeCtx}>
@@ -122,6 +112,7 @@ function App() {
         <Route path='/movies' element={<MovieList movieList ={movieList} setMovieList={setMovieList} />} />
         <Route path='*' element={<NotFound />} />
         <Route path='/movie/add' element={<AddMovie movieList ={movieList} setMovieList={setMovieList} />} />
+        <Route path='/basic-form' element={<BasicForm />} />
       </Routes>
       
     </div>
