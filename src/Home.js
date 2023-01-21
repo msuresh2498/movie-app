@@ -1,8 +1,8 @@
 export function NotFound() {
   return (
     <div>
-      <img className='notfound' src="https://cdn.dribbble.com/users/2399102/screenshots/10579506/media/bcd1211375b29ae022039e52b2dd7734.mp4" alt="not found" />
-      <h1>404 Not Found</h1>
+      <img className='notfound' src="https://images.hdqwalls.com/wallpapers/error-404-page-3k.jpg" alt="not found" />
+      {/* <h1>404 Not Found</h1> */}
     </div>
   );
 }
