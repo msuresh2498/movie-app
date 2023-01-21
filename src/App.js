@@ -131,10 +131,4 @@ function App() {
 }
 
 
-// function BasicForm() {
-//   return (
-//     <h1>BasicForm</h1>
-//   )
-// }
-
 export default App;
