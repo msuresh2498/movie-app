@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import { Counter } from './Counter';
 import { intial_MOVIELIST } from './intial_MOVIELIST';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
