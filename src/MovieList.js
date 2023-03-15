@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { Movie } from './App';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
+import { API } from './global';
 
 export function MovieList() {
   const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
-    fetch("https://6328115f5731f3db99635f14.mockapi.io/movies", {
+    fetch(`${API}/movies`, {
       method: "GET"
     })
       .then((data) => data.json())
@@ -15,7 +16,7 @@ export function MovieList() {
   }, [])
 
   const deleteMovie = (id) => {
-    fetch(`https://6328115f5731f3db99635f14.mockapi.io/movies/${id}`, {
+    fetch(`${API}/movies/${id}`, {
       method: "DELETE",
     });
   };

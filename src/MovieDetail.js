@@ -2,20 +2,23 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { API } from './global';
 
 export function MovieDetail() {
   const { id } = useParams();
+  console.log(useParams())
 
   const [movie, setMovie] = useState({});
 
   const getMovie = () => {
-    fetch(`https://6328115f5731f3db99635f14.mockapi.io/movies/${id}`, {
+    fetch(`${API}/movies/${id}`, {
       method: "GET"
     })
       .then((data) => data.json())
       .then((mv) => setMovie(mv));
   };
-  useEffect(() => getMovie(), []);
+  useEffect(() => getMovie(),);
+  
   const styles = {
     color: movie.rating > 8.0 ? "green" : "red",
   };
